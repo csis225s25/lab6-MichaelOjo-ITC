@@ -1,11 +1,12 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 /**
- * Lab 6 starter example
+ * This program opens a window with the text centered in the middle.
  * 
- * @author Jim Teresco
- * @author Ira Goldstein
+ * @author Lexi Randt, Michael Ojo
+ * 
  * @version Spring 2025
  */
 
@@ -13,18 +14,42 @@ import javax.swing.*;
 // allowing us to interact with Java's graphics system
 class GraphicsPanel extends JPanel {
 
+    private  String text = "Hello, Java Graphics World!";
+    private Font font = new Font("SWScrpc", Font.PLAIN, 20);
+
+    public void setText(String text) {
+        this.text = text;
+        repaint();
+    }
+
+    public void setFont(Font font) {
+
+        this.font = font;
+        repaint();
+    }
+
     @Override
     public void paintComponent(Graphics g) {
 
         // first, we should call the paintComponent method we are
         // overriding in JPanel
         super.paintComponent(g);
-
+        g.setFont(font);
+        
+        FontMetrics fm = g.getFontMetrics();
+        int textWidth = fm.stringWidth(text);
+        int textHeight = fm.getAscent();
         // the Graphics object passed to this method has many methods
         // we can use to draw in the area of the panel, one of which
         // allows us to draw a String at a given x,y position
-        g.drawString("Hello, Java Graphics World!", 0, 20);
+        int x = g.getFontMetrics().stringWidth(text);
+        int y = g.getFontMetrics().getAscent();
+        g.drawString(text, (getWidth()-x)/2, (getHeight()-y)/2);
+       
+
+        
     }
+
 }
 
 public class HelloGraphics implements Runnable {
@@ -48,6 +73,8 @@ public class HelloGraphics implements Runnable {
         // display the window we've created
         frame.pack();
         frame.setVisible(true);
+
+        
     }
 
     public static void main(String args[]) {
