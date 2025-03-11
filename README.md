@@ -7,7 +7,7 @@ CSIS-225 Lab , Spring 2025
 - HelloGraphics.java: Variation on HelloWorld using paintComponent to "draw" the text.
 - ListJavaFonts.java: Does what it says.  It lists the available Font Family names
 - MouseDemo.java: A program to demonstrate the various mouse listeners and mouse events
-- MousePressCounter.java: This program counts the numbers of mouse clicks on a panel and has a reset button for the count.
+- MousePressCounter.java: This program counts the number of mouse clicks on a panel and has a reset button for the count.
 
 
 
